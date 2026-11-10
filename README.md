@@ -40,15 +40,21 @@ Driver updates (especially clean installs) can wipe custom profiles. The startup
 
 There are three ways to install it.
 
-**From the release download.** Download `com.local.gsync-profile-guard-1.0.0.tgz` from the [Releases](../../releases) page. In Unity, open **Window > Package Manager > + > Add package from tarball...** and pick the file. Keep the `.tgz` somewhere permanent, because the project references it by path.
-
-**From git.** Use **+ > Add package from git URL...** with:
+**From git (recommended).** In Unity, open **Window > Package Manager > + > Add package from git URL...** and enter:
 
 ```
 https://github.com/jcoker85/GSyncProfileGuard.git#v1.0.0
 ```
 
-The repo is private, so this needs git on this machine signed in to GitHub (for example through Git Credential Manager).
+Or add it to a project's `Packages/manifest.json`:
+
+```json
+"com.local.gsync-profile-guard": "https://github.com/jcoker85/GSyncProfileGuard.git#v1.0.0"
+```
+
+This needs [git](https://git-scm.com/) installed. Remove `#v1.0.0` to track the latest commit instead of the release.
+
+**From the release download.** Download `com.local.gsync-profile-guard-1.0.0.tgz` from the [latest release](https://github.com/jcoker85/GSyncProfileGuard/releases/latest). In Unity, open **Window > Package Manager > + > Add package from tarball...** and pick the file. Keep the `.tgz` somewhere permanent, because the project references it by path.
 
 **From a local clone.** Use **+ > Add package from disk...** and pick the clone's `package.json`, or add it to a project's `Packages/manifest.json`:
 
@@ -62,3 +68,17 @@ The repo is private, so this needs git on this machine signed in to GitHub (for 
 - It talks to the driver through `nvapi64.dll` (NVAPI DRS), the same interface NVIDIA Profile Inspector uses. No extra binaries are shipped.
 - Struct layouts and IDs were checked against NVIDIA driver 32.0.16.1742.
 - To undo, use **Restore NVIDIA Defaults For This Editor**, turn off **Check On Startup** (or remove the package), and restart the editor.
+
+## AI disclaimer
+
+This package was written with the help of an AI coding assistant (Anthropic's Claude), working under the author's direction. That covers the diagnosis, the code and this README. The author reviewed and tested it before release, but only on one setup: Windows 11, an RTX 4090, NVIDIA driver 32.0.16.1742 and Unity 6000.3.28f1.
+
+The NVAPI function IDs, setting IDs and struct layouts were checked against that driver by calling it, not taken from NVIDIA's SDK. Other driver versions, GPUs or setups may behave differently.
+
+**This package changes your NVIDIA driver settings.** Read the code before you use it. You can undo its changes with **Restore NVIDIA Defaults For This Editor** or NVIDIA Profile Inspector.
+
+## License
+
+[MIT](LICENSE.md). It's provided as is, with no warranty.
+
+This project isn't affiliated with or endorsed by NVIDIA or Unity Technologies. NVIDIA and G-SYNC are trademarks of NVIDIA Corporation, and Unity is a trademark of Unity Technologies.
