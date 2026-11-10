@@ -1,0 +1,6 @@
+.vs/
+.idea/
+*.csproj
+*.sln
+obj/
+bin/

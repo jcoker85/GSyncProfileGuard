@@ -1,0 +1,15 @@
+{
+  "name": "com.local.gsync-profile-guard",
+  "version": "1.0.0",
+  "displayName": "G-Sync Profile Guard",
+  "description": "Editor-only tool for Windows + NVIDIA. Keeps G-Sync disallowed in the NVIDIA driver profile for the running Unity editor's own Unity.exe, so focusing the editor can't switch monitors into variable refresh (black flashes on all displays). Re-applies the settings if a driver update resets them.",
+  "unity": "2021.3",
+  "keywords": [
+    "nvidia",
+    "gsync",
+    "g-sync",
+    "vrr",
+    "editor",
+    "flicker"
+  ]
+}
